@@ -21,13 +21,12 @@ class Guitars:
         Создан интерфейсный метод (геттер) для возврата значения, установленного в атрибут self._sring
         :return:
         """
-        return self.__string, self.__manufacture
+        return self.__string
 
     @get_string.setter
-    def get_string(self, string, manufacture):
-        if self.__test(string) and self.__test(manufacture):
+    def get_string(self, string):
+        if self.__test(string):
             self.__string = string
-            self.__manufacture = manufacture
         else:
             raise ValueError("Передаваемые значения должны быть типов \"int\" и \"str\"")
 
@@ -37,5 +36,5 @@ class Guitars:
         :return:
         """
 c = Guitars(6, 'Fender')
-c.get_string = ('Gibson', 1)
+c.get_string = 9
 print(c.get_string)
