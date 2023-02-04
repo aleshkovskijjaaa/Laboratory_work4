@@ -39,6 +39,38 @@ class Guitars:
     def get_string(self):
         del self.__string
 
+    @property
+    def manufacture(self):
+        """
+        Создан интерфейсный метод (геттер) для возврата значения, установленного в атрибут self._manufacture
+        :return:
+        """
+        return self.__manufacture
+
+    @manufacture.setter
+    def manufacture(self, manufacture):
+        if self.__test(manufacture):
+            self.__string = manufacture
+        else:
+            raise ValueError("Передаваемые значения должны быть типов \"int\" и \"str\"")
+
+        """
+        Создан интерфейсный метод (сеттер) для установки значения атрибуту self._manufacture
+        :param new_string:
+        :return:
+        """
+
+    @manufacture.deleter
+    def manufacture(self):
+        del self.__manufacture
+
+    def __str__(self):
+        return f"Количество струн = {self.__string}, Производитель гитары - {self.manufacture}"
+    def __repr__(self):
+        return 
+
+
+
 c = Guitars(6, 'Fender')
 c.get_string = 9
 print(c.get_string)
