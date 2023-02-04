@@ -35,6 +35,10 @@ class Guitars:
         :param new_string:
         :return:
         """
+    @get_string.deleter
+    def get_string(self):
+        del self.__string
+
 c = Guitars(6, 'Fender')
 c.get_string = 9
 print(c.get_string)
