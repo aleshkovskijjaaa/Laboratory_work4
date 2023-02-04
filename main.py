@@ -7,16 +7,25 @@ class Guitars:
         """
         self.__string = 0
         self.__manufacture = 0
+        if self.__test(string) and self.__test(manufacture):
+            self.__string = string
+            self.__manufacture = manufacture
 
+    @classmethod
+    def __test(cls, string):
+        return type(string) in (int, str)
+
+    @property
     def get_string(self):
         """
         Создан интерфейсный метод (геттер) для возврата значения, установленного в атрибут self._sring
         :return:
         """
-        return self._string
+        return self.__string, self.__manufacture
 
-    def set_stringq(self, string, manufacture):
-        if type(string) in (int) and type(manufacture) in (str):
+    @get_string.setter
+    def get_string(self, string, manufacture):
+        if self.__test(string) and self.__test(manufacture):
             self.__string = string
             self.__manufacture = manufacture
         else:
@@ -27,4 +36,6 @@ class Guitars:
         :param new_string:
         :return:
         """
-
+c = Guitars(6, 'Fender')
+c.get_string = ('Gibson', 1)
+print(c.get_string)
