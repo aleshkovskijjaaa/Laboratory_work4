@@ -1,5 +1,5 @@
 class Guitars:
-    def __init__(self, string: int, manufacture: int):
+    def __init__(self, string: int, manufacture: (int, str)):
         """
         Создан родительский класс Guitars
         :param string: количество струн
@@ -35,6 +35,7 @@ class Guitars:
         :param new_string:
         :return:
         """
+
     @get_string.deleter
     def get_string(self):
         del self.__string
@@ -66,8 +67,10 @@ class Guitars:
 
     def __str__(self):
         return f"Количество струн = {self.__string}, Производитель гитары - {self.manufacture}"
+
     def __repr__(self):
-        return 
+        return f"{self.__class__}: {self.__string}, {self.__manufacture}"
+
 
 
 
