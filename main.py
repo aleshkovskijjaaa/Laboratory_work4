@@ -1,3 +1,8 @@
+import random
+
+COLORS = ['dark', 'blue', 'yellow', 'purple', 'white']
+
+
 class Guitars:
     def __init__(self, string: int, manufacture: (int, str)):
         """
@@ -65,13 +70,37 @@ class Guitars:
     def manufacture(self):
         del self.__manufacture
 
+    def paint_guitar(self):
+        random_color = random.randint(0, len(COLORS) - 1)
+        return COLORS[random_color]
+
     def __str__(self):
         return f"Количество струн = {self.__string}, Производитель гитары - {self.manufacture}"
 
     def __repr__(self):
-        return f"{self.__class__}: {self.__string}, {self.__manufacture}"
+        return f"{self.__class__}: {self.__string!r}, {self.__manufacture!r}"
 
 
+class Electric_guitars(Guitars):
+    """
+    Электрогитары - дочерний класс
+    """
+
+    def __init__(self, string: int, manufacture: (int, str)):
+        super().__init__(string, manufacture)
+        self.model = "Stratocaster"
+
+    @property
+    def model(self) -> str:
+        """
+        Создан геттер
+        :return: Должен вернуть модель электрогитары
+        """
+        return self.model
+
+    @model.setter
+    def model(self, new_model) -> None:
+        self.model = new_model
 
 
 c = Guitars(6, 'Fender')
